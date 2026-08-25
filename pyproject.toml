@@ -1,0 +1,66 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.backends._legacy:_Backend"
+
+[project]
+name = "llm-autonomous-trading-agent"
+version = "0.1.0"
+description = "Autonomous trading agent: quant signals + thin LLM research, code-enforced risk, broker adapters, honest backtests."
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.11"
+authors = [{name = "Krish Patel"}]
+
+dependencies = [
+    "pydantic>=2.5",
+    "pydantic-settings>=2.0",
+    "python-dotenv>=1.0",
+    "pandas>=2.1",
+    "numpy>=1.25",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4",
+    "pytest-cov>=4.1",
+    "ruff>=0.1",
+    "mypy>=1.7",
+    "types-python-dateutil",
+]
+data = [
+    "yfinance>=0.2.30",
+    "pandas-ta>=0.3.14b",
+]
+llm = [
+    "openai>=1.0",
+    "anthropic>=0.20",
+]
+broker = [
+    "alpaca-py>=0.20",
+]
+
+[project.scripts]
+run-agent = "scripts.run_agent:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "N", "UP", "B", "C4"]
+ignore = ["E501"]
+
+[tool.mypy]
+python_version = "3.11"
+strict = false
+warn_return_any = true
+warn_unused_configs = true
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_functions = ["test_*"]
