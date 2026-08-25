@@ -24,29 +24,19 @@ llm-autonomous-trading-agent/
 ├── README.md                 ← you are here (lean index)
 ├── LICENSE
 ├── CONTRIBUTING.md
-├── notes/                    ← plans, specs, ADRs, runbooks (read these)
-│   ├── README.md             ← notes index
-│   ├── PRODUCT_PLAN.md       ← goals, principles, roadmap summary
-│   ├── AGENT_PLAYBOOK.md
-│   ├── ARCHITECTURE.md
-│   ├── DOMAIN_MODELS.md
-│   ├── CONVENTIONS.md
-│   ├── features/             ← subsystem contracts
-│   ├── phases/               ← Phase 0–8 exit criteria
-│   ├── adr/                  ← locked decisions
-│   └── runbooks/
-│
-├── src/                      ← application code (Phase 0+)
+├── notes/                    ← plans, specs, ADRs, runbooks
+├── src/                      ← application code
+│   ├── api/                  ← local operator UI (FastAPI)
+│   └── orchestration/        ← control loop + session
+├── frontend/                 ← black / grey / white operator UI
 ├── tests/
-├── scripts/
-├── frontend/                 ← Phase 7+
-├── notebooks/
-├── pyproject.toml            ← forthcoming in Phase 0
+├── scripts/run_agent.py      ← CLI and --ui entry point
+├── pyproject.toml
 ├── .env.example
-└── .github/workflows/
+└── .env.working_example      ← copy that actually loads under pydantic-settings
 ```
 
-Code directories appear as phases land. Until then, **`notes/` is the working source of truth.**
+Plans and ADRs still live in [`notes/`](notes/).
 
 ---
 
@@ -63,11 +53,31 @@ Code directories appear as phases land. Until then, **`notes/` is the working so
 ## Quick start
 
 ```bash
-# After Phase 0 scaffolding exists:
-cp .env.example .env          # LIVE_TRADING_ENABLED=false
-pip install -e ".[dev]"
-python scripts/run_agent.py --tickers SPY --broker paper
+python3 -m pip install -e ".[dev]"
+cp .env.working_example .env   # LIVE_TRADING_ENABLED=false; paper broker
 ```
+
+List settings (`SYMBOL_ALLOWLIST`, `STRATEGIES`) must be JSON arrays. A CSV value like `SPY,AAPL` will fail at startup. `.env.example` documents the knobs; `.env.working_example` is a loadable copy.
+
+**CLI (one paper iteration, JSON to stdout):**
+
+```bash
+python3 scripts/run_agent.py --tickers SPY,AAPL --broker paper
+```
+
+**Operator UI (black / grey / white, localhost):**
+
+```bash
+python3 scripts/run_agent.py --ui
+```
+
+Opens [http://127.0.0.1:8765](http://127.0.0.1:8765). Shows equity, cash, day P&L, stub marks, paper holdings, and a decision log (signal → risk → broker). **Run iteration** steps the loop; **Disarm** sets the kill switch.
+
+```bash
+python3 scripts/run_agent.py --ui --no-browser --ui-port 8765
+```
+
+Phase 0 uses a paper broker and stub quotes. No live APIs are required. `LIVE_TRADING_ENABLED` stays false.
 
 Details: [`notes/phases/`](notes/phases/).
 
