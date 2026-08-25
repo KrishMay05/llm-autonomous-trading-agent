@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Trading Agent</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="top">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <div>
+          <p class="eyebrow">Local operator view</p>
+          <h1>Trading Agent</h1>
+        </div>
+      </div>
+      <div class="top-meta" id="top-meta">
+        <span class="pill" id="mode-pill">paper</span>
+        <span class="pill muted" id="live-pill">live off</span>
+        <span class="pill muted" id="kill-pill">armed</span>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="toolbar">
+        <p class="status-line" id="status-line">Loading…</p>
+        <div class="actions">
+          <button type="button" class="btn ghost" id="btn-kill">Disarm</button>
+          <button type="button" class="btn solid" id="btn-run">Run iteration</button>
+        </div>
+      </section>
+
+      <p class="banner hidden" id="banner" role="status"></p>
+
+      <section class="metrics" id="metrics" aria-label="Portfolio snapshot">
+        <article class="metric">
+          <h2>Equity</h2>
+          <p class="figure" id="m-equity">—</p>
+          <p class="hint" id="m-equity-hint">session start</p>
+        </article>
+        <article class="metric">
+          <h2>Cash</h2>
+          <p class="figure" id="m-cash">—</p>
+          <p class="hint">buying power</p>
+        </article>
+        <article class="metric">
+          <h2>Day P&amp;L</h2>
+          <p class="figure" id="m-pnl">—</p>
+          <p class="hint" id="m-pnl-hint">vs session start</p>
+        </article>
+        <article class="metric">
+          <h2>Positions</h2>
+          <p class="figure" id="m-pos">—</p>
+          <p class="hint" id="m-pos-hint">open symbols</p>
+        </article>
+      </section>
+
+      <section class="grid">
+        <article class="panel">
+          <header class="panel-h">
+            <h2>Marks</h2>
+            <p>Stub quotes used for this run</p>
+          </header>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Symbol</th>
+                  <th class="num">Bid</th>
+                  <th class="num">Last</th>
+                  <th class="num">Ask</th>
+                </tr>
+              </thead>
+              <tbody id="quotes-body">
+                <tr>
+                  <td colspan="4" class="empty">No quotes yet. Run an iteration.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+
+        <article class="panel">
+          <header class="panel-h">
+            <h2>Holdings</h2>
+            <p>Paper broker positions</p>
+          </header>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Symbol</th>
+                  <th class="num">Qty</th>
+                  <th class="num">Avg</th>
+                  <th class="num">Value</th>
+                </tr>
+              </thead>
+              <tbody id="pos-body">
+                <tr>
+                  <td colspan="4" class="empty">No positions.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+      </section>
+
+      <article class="panel">
+        <header class="panel-h">
+          <h2>Decision log</h2>
+          <p>Signal → risk → broker, newest first. Click a row for detail.</p>
+        </header>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Time</th>
+                <th>Symbol</th>
+                <th>Decision</th>
+                <th>Strategy</th>
+                <th>Risk</th>
+                <th>Broker</th>
+              </tr>
+            </thead>
+            <tbody id="audit-body">
+              <tr>
+                <td colspan="6" class="empty">No decisions yet.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="detail hidden" id="audit-detail" hidden></div>
+      </article>
+
+      <article class="panel">
+        <header class="panel-h">
+          <h2>Session</h2>
+          <p>Limits and flags from the current process</p>
+        </header>
+        <dl class="kv" id="session-kv"></dl>
+      </article>
+    </main>
+
+    <footer>
+      <p>Paper default. Stub data. No live orders from this view.</p>
+    </footer>
+
+    <script src="/app.js"></script>
+  </body>
+</html>

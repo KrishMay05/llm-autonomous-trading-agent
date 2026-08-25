@@ -1,1 +1,1 @@
-"""API package — control plane (Phase 7)."""
+"""API package — local operator UI + JSON control plane."""
