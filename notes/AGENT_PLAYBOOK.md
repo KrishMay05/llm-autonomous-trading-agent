@@ -10,7 +10,7 @@ Career/demo polish is secondary. Edge evidence and safety are primary.
 
 ## Before writing code
 
-1. Read [README.md](../README.md) principles (quant-first, risk-as-code, broker-from-day-one).
+1. Read [PRODUCT_PLAN.md](PRODUCT_PLAN.md) principles (quant-first, risk-as-code, broker-from-day-one).
 2. Open the **current phase** doc under [phases/](phases/) — do not jump ahead past unmet exit criteria.
 3. Open the matching [features/](features/) specs for modules you will touch.
 4. Skim relevant [ADRs](adr/) so you do not re-litigate locked decisions.

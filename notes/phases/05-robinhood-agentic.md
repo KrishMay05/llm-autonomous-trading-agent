@@ -17,7 +17,7 @@ Phase 4 exit criteria met (broker-parity discipline proven on Alpaca paper).
 | Adapter | `src/brokers/robinhood_agentic.py` |
 | Settings | MCP/agentic credentials env vars in `.env.example` |
 | Preview mode | config `ROBINHOOD_PREVIEW_ONLY=true` default true |
-| Runbook | `docs/runbooks/robinhood-agentic.md` (create with this phase) |
+| Runbook | `notes/runbooks/robinhood-agentic.md` (complete with this phase) |
 | Tests | mocks of MCP tool calls; reject unsupported assets |
 
 ## Implementation plan

@@ -1,17 +1,18 @@
 # Documentation review checklist
 
-Use this when updating `docs/` so future agents keep quality high.
+Use this when updating `notes/` so future agents keep quality high.
 
 ## Completeness
 
-- [ ] [docs/README.md](README.md) links resolve
+- [ ] [notes/README.md](README.md) links resolve
 - [ ] Every Phase 0–8 has exit criteria and non-goals
 - [ ] Every major `src/` area has a feature spec
 - [ ] ADRs cover locked cross-cutting decisions
 - [ ] Domain models match feature contracts (field names)
 
-## Consistency with root README
+## Consistency with PRODUCT_PLAN + lean root README
 
+- [ ] Root README stays a short map; detail lives in `notes/`
 - [ ] Quant-first / risk-as-code / broker adapters / equities-first unchanged
 - [ ] Robinhood path is official Agentic MCP + dedicated account
 - [ ] No unofficial scraper guidance
