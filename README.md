@@ -556,6 +556,8 @@ Pull requests welcome once contribution guidelines land in [CONTRIBUTING.md](CON
 
 ## Links
 
-- **Documentation:** [docs/](docs/) (WIP)
+- **Documentation (start here for implementation):** [docs/README.md](docs/README.md)
+- **Agent playbook:** [docs/AGENT_PLAYBOOK.md](docs/AGENT_PLAYBOOK.md)
+- **Phased plans:** [docs/phases/](docs/phases/)
 - **Robinhood Agentic Trading:** [Robinhood newsroom announcement](https://robinhood.com/us/en/newsroom/robinhood-is-now-open-to-agents/)
 - **Author:** [Your Name](https://github.com/yourusername)
