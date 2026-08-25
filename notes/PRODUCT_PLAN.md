@@ -544,7 +544,7 @@ Paper trading is the default. Live trading — including via **Robinhood Agentic
 
 ## License
 
-MIT — See [LICENSE](LICENSE)
+MIT — See [LICENSE](../LICENSE)
 
 ---
 
